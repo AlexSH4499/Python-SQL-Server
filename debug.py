@@ -10,13 +10,3 @@ class Debug:
     def __call__(self, arg):
         print(arg)
         print(self.fn(arg))
-
-@Debug
-def sample(n):
-    if n == 1:
-        return n
-    else:
-        return sample(n-1)
-
-if __name__ == '__main__':
-    sample(2)
