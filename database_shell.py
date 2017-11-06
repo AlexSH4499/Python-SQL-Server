@@ -18,6 +18,18 @@ def commands():
         }
     return dic
 
+def sql_command(curr,s):
+    if sqlite3.complete_statement(s):
+        try:
+            s = s.strip()
+            curr.execute(s)
+
+        except sqlite3.Error, e:
+            print("Error while executing SQL command in {}".format(func.__name__))
+
+    s = ''
+    
+    return 
 
 def cmd_help(cmds):
 
