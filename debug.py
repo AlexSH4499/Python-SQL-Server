@@ -1,12 +1,13 @@
-import sys
-import os
+from functools import wraps
+from time import time
 
-class Debug:
-    def __init__(self, fn):
-        self.fn = fn
-        print(sys.platform)
-        print(self.fn)
-
-    def __call__(self, arg):
-        print(arg)
-        print(self.fn(arg))
+def timer(fn):
+    @wraps(fn)
+    def wrap(*args, **kw):
+        time_start = time()
+        result = fn(*args,**kw)
+        time_end = time()
+        print('function:{}\took:{} \n args:{} \n kwargs:{}'\
+              .format(fn.__name__,time_end-time_start,args,kw))
+        return result
+    return wrap
