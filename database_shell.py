@@ -10,8 +10,6 @@ import commands
 from debug import timer
 
 
-
-@timer
 def database_shell():
     ''' Provides a simplistic commandline interface '''
     print('Welcome to the simple SQLite 3 database interactive shell!\n\
@@ -20,7 +18,7 @@ def database_shell():
     
     try:
         conn, curr = setup_database('my.db')
-    except IOError as e:
+    except sqlite3.Error as e:
         print(e)
 
     line = 0
