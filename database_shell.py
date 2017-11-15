@@ -84,7 +84,7 @@ def setup_database(name):
             #TODO: Find a better way to convert this into a list of tuples
             #       Using only one date instance
             #print(os.listdir('../Python-SQL-Server'))
-            data = [f for f in os.listdir('../Python-SQL-Server') if is_image(f)]# this is list comprehension with a condition added
+            data = [f for f in os.listdir('../Python-SQL-Server/ImageLibrary') if is_image(f)]# this is list comprehension with a condition added
             today = str(date.today())
             date_li = []
             i = 0
@@ -134,7 +134,7 @@ def update_database(name):
     try:
         copy = load_database(name)
         today = str(date.today)
-        local_dir = os.listdir('../')
+        local_dir = os.listdir('../Python-SQL-Server-ImageLibrary')
 
         changes = [f for f in local_dir if f not in copy['name']]
 
